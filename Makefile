@@ -11,7 +11,7 @@
 PROJECT   = test
 CC       = gcc
 DBG      = gdb
-CFLAGS   = -W -Wall -std=gnu99 -D_GNU_SOURCE
+CFLAGS   = -W -Wall -std=gnu99 -D_GNU_SOURCE -DTEST_MODE
 LCC   = gcc
 LFLAGS   = -ldl
 SRC_DIR   = ./src/
@@ -45,6 +45,9 @@ run: build
 		$(BIN_DIR)/$(PROJECT)
     endif
 
+.PHONY: deploy
+deploy:	run 
+	sudo cp src/test.h /usr/include/libtest.h
 $(BIN_DIR)/$(PROJECT): $(OBJ)
 	@$(LCC) $(OBJ) $(LFLAGS) -o $@
 
