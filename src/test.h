@@ -1,6 +1,5 @@
 #ifndef LIBTEST
 #define LIBTEST
-    #ifdef TEST_MODE
         typedef struct{
             struct list_link *last;
             struct list_link *first;
@@ -76,8 +75,4 @@
             }
             return 0;
         }
-
-    #else
-        #define INIT_LIST_TEST(ptr)
-    #endif
 #endif

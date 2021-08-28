@@ -65,5 +65,3 @@ Usage on your program :
         }
     }
 ```
-
-To compile in test mode add **CFLAG** **-DTEST_MODE**.
