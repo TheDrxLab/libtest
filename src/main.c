@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "test.h"
 
-#ifdef TEST_MODE
 typedef struct object_item
 {
 	int i;
@@ -59,16 +58,16 @@ int list_test(){
 }
 
 	int test1(){
-		return 0;
+		return TEST_OK;
 	}
 	int test2(){
-		return 0;
+		return TEST_OK;
 	}
 	int test3(){
-		return -1;
+		return TEST_ERROR;
 	}
 	int test4(){
-		return 0;
+		return TEST_OK;
 	}
 
 	/**
@@ -123,14 +122,8 @@ int list_test(){
 		}
 		return 0;
 	}
-#endif
 
 int main(){
-	#ifdef TEST_MODE
-		list_test();
-		test_test();
-		return -0;
-	#else
-		return -1;
-	#endif
+	list_test();
+	test_test();
 }

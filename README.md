@@ -28,16 +28,16 @@ Usage on your program :
     #include "test.h"
 
 	int test1(){
-		return 0;
+		return TEST_OK;
 	}
 	int test2(){
-		return 0;
+		return TEST_OK;
 	}
 	int test3(){
-		return -1;
+		return TEST_ERROR;
 	}
 	int test4(){
-		return 0;
+		return TEST_OK;
 	}
 
     int main(){

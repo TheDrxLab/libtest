@@ -1,5 +1,7 @@
 #ifndef LIBTEST
 #define LIBTEST
+        #define TEST_OK 0
+        #define TEST_ERROR -1
         typedef struct{
             struct list_link *last;
             struct list_link *first;
