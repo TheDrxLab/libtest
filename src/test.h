@@ -47,22 +47,38 @@
             link link;
         } Test;
         
+        typedef struct{
+            lifo list;
+        } TestGroup;
+
+        typedef enum{
+            GROUP,
+            TEST
+        } TestGroupUnionType;
+
+        typedef union __test_group_union
+        {
+            TestGroupUnionType type;
+            TestGroup group;
+            Test test;
+        } TestGroupUnion;
+        
         typedef lifo TestList;
 
         /**
          * Init test list
          */
-        #define INIT_LIST_TEST(ptr) INIT_LIST_HEAD(ptr)
+        #define INIT_GROUP(ptr) INIT_LIST_HEAD(&ptr.list)
         
         /**
          * Add test on specified test list
          */
-        #define ADD_TEST(ptr_test,list) lifo_add(ptr_test, list, Test, link)
+        #define ADD_TEST(ptr_test,group) lifo_add(ptr_test, &group.list, Test, link)
 
         /**
          * Run all tests in list
          */
-        #define RUN_TEST(list) __run_test(list)
+        #define RUN_TEST(group) __run_test(&group.list)
 
         /**
          * Internal function used by previous macro

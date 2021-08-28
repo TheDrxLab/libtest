@@ -38,12 +38,12 @@ Usage on your program :
 	}
 	int test4(){
 		return TEST_OK;
-	}
+	}   
 
     int main(){
-        TestList test;
+        TestGroup group;
 		Test * failedTest; 
-		INIT_LIST_TEST(&test);
+		INIT_GROUP(group);
 			
 		Test t1,t2,t3,t4;
 		t1.func = test1;
@@ -51,12 +51,12 @@ Usage on your program :
 		t3.func = test3;
 		t4.func = test4;
 
-		ADD_TEST(&t1,&test);
-		ADD_TEST(&t2,&test);
-		ADD_TEST(&t3,&test);
-		ADD_TEST(&t4,&test);
+		ADD_TEST(&t1,group);
+		ADD_TEST(&t2,group);
+		ADD_TEST(&t3,group);
+		ADD_TEST(&t4,group);
 
-		failedTest = RUN_TEST(&test);
+		failedTest = RUN_TEST(group);
 
         if(failedTest == 0){
             return -1;

@@ -74,9 +74,9 @@ int list_test(){
 	 * Test "test" tools
 	 */
 	int test_test(){
-		TestList test;
+		TestGroup group;
 		Test * failedTest; 
-		INIT_LIST_TEST(&test);
+		INIT_GROUP(group);
 			
 		Test t1,t2,t3,t4;
 		t1.func = test1;
@@ -84,8 +84,8 @@ int list_test(){
 		t3.func = test3;
 		t4.func = test4;
 
-		ADD_TEST(&t1,&test);
-		failedTest = RUN_TEST(&test);
+		ADD_TEST(&t1,group);
+		failedTest = RUN_TEST(group);
 		
 		if(failedTest != 0){
 			fprintf(stderr, "%s", "[FAIL] All test OK 1\n");
@@ -93,8 +93,8 @@ int list_test(){
 			fprintf(stdout, "%s", "[OK] All test OK 1\n"); 
 		}
 		
-		ADD_TEST(&t2,&test);
-		failedTest = RUN_TEST(&test);
+		ADD_TEST(&t2,group);
+		failedTest = RUN_TEST(group);
 		
 		if(failedTest != 0){
 			fprintf(stderr, "%s", "[FAIL] All test OK 2\n");
@@ -102,18 +102,18 @@ int list_test(){
 			fprintf(stdout, "%s", "[OK] All test OK 2\n"); 
 		}
 		
-		ADD_TEST(&t3,&test);
+		ADD_TEST(&t3,group);
 		
-		failedTest = RUN_TEST(&test);
+		failedTest = RUN_TEST(group);
 		
 		if(failedTest != &t3){
 			fprintf(stderr, "%s", "[FAIL] test failure\n");
 		}else{
 			fprintf(stdout, "%s", "[OK] test failure\n"); 
 		}
-		ADD_TEST(&t4,&test);
+		ADD_TEST(&t4,group);
 
-		failedTest = RUN_TEST(&test);
+		failedTest = RUN_TEST(group);
 		
 		if(failedTest != &t3){
 			fprintf(stderr, "%s", "[FAIL] premature end\n");
