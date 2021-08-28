@@ -40,7 +40,7 @@ gdb: build
 	$(DBG) $(BIN_DIR)/$(PROJECT)
 
 .PHONY: run
-run: build
+run: clean build
     ifneq ($(DBG_MODE),1)
 		$(BIN_DIR)/$(PROJECT)
     endif
